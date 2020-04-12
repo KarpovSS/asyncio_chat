@@ -22,7 +22,7 @@ class ServerProtocol(asyncio.Protocol):
                 self.login = decoded.replace('login:', '').replace('\r\n', '')
                 self.transport.write(f'Hello, {self.login}!\n'.encode())
             else:
-                self.transport.write('Wrong login\n'.encode())
+                self.transport.write('Wrong login. Please login with \'login:<your_login>\''.encode())
 
     def connection_made(self, transport: transports.Transport):
         # notify server of new connection:
